@@ -1,0 +1,86 @@
+@use "../mixin/card" as _card;
+
+.upper_bar {
+  &-date {
+    font-weight: 500;
+  }
+  label {
+    border-bottom: 1px solid $black-color;
+  }
+  &-sarch {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 0;
+    &::placeholder {
+      font-weight: 500;
+    }
+    &:active,
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.navbar {
+  border: 0 !important;
+  .navbar-toggler {
+    &:focus {
+      box-shadow: none;
+      background-color: $main-color;
+      border-color: $main-color;
+      .navbar-line {
+        background-color: #fff;
+      }
+    }
+  }
+  &-line {
+    height: 1px;
+    width: 1rem;
+    display: block;
+    background-color: $main-color;
+  }
+  .nav-item {
+    .nav-link {
+      font-weight: 500;
+      &.routerLinkActive {
+        @include _card.sharedCard(
+          $color: $main-color,
+          $radius: 5px,
+          $padding: 0.5rem !important
+        );
+      }
+    }
+  }
+}
+
+.routerLinkActive {
+  @include _card.sharedCard(
+    $color: $main-color,
+    $radius: 5px,
+    $padding: 0.5rem 1rem !important
+  );
+  color: #fff !important;
+}
+
+.hwrap {
+  @include _card.sharedCard($radius: 7px);
+  .hitem {
+    flex-shrink: 0;
+    padding: 10px;
+  }
+}
+
+@keyframes tickerh {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-400%, 0, 0);
+  }
+}
+.hmove {
+  animation: tickerh linear 50s infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}

@@ -1,0 +1,23 @@
+@use "../../../assets/scss/mixin/card" as _card;
+@import "../../../assets/scss/core/color";
+@import "../../../assets/scss/core/variable";
+
+li {
+  a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    display: block;
+    transition: $transition;
+    margin-bottom: 0.25rem;
+    &:hover {
+      @include _card.sharedCard(
+        $color: $main-color,
+        $radius: 5px,
+        $padding: 0.5rem 1rem
+      );
+      color: #fff;
+    }
+  }
+}

@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/import";
+@import "./assets/css/audio.css";
+
+p {
+  font-weight: 500;
+}
+
+img {
+  border-radius: 3px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.plyr--audio {
+  width: 100%;
+}

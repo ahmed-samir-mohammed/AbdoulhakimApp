@@ -1,0 +1,14 @@
+@import "../core/color";
+
+@mixin sharedCard(
+  $color: $gray-color,
+  $alpha: 1,
+  $radius,
+  $padding: null,
+  $border: null
+) {
+  background-color: rgba($color: $color, $alpha: $alpha);
+  border-radius: $radius;
+  padding: $padding;
+  border: $border;
+}

@@ -1,0 +1,9 @@
+@use "../mixin/card" as _card;
+
+.share__card {
+  @include _card.sharedCard(
+    $radius: 5px,
+    $padding: 1rem,
+    $border: $border-card
+  );
+}

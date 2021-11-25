@@ -1,0 +1,58 @@
+<div class="upper_bar p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 d-flex align-items-center">
+                <div class="upper_bar-date">
+                    18 ذو القعدة 1442هـ الموافق 27 يونيو 2021م
+                </div>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <form class="w-50">
+                    <label for="upper_bar-sarch" class="w-100 d-flex align-items-center">
+                        <i class="fas fa-search"></i>
+                        <input class="upper_bar-sarch" id="upper_bar-sarch" type="search" placeholder="ابحث هنا...">
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container d-md-none">
+    <nav class="share__card mb-3 p-2 navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid p-0">
+            <button class="navbar-toggler p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-line mb-1"></span>
+                <span class="navbar-line mb-1"></span>
+                <span class="navbar-line"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mt-3 p-0">
+                    <li class="nav-item" *ngFor="let item of SideMenuist">
+                        <a class="nav-link" routerLinkActive="routerLinkActive"
+                            [routerLinkActiveOptions]="{exact: true}" routerLink="{{item.routerLink}}">
+                            {{item.name}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container mb-4">
+    <div class="hwrap overflow-hidden">
+        <div class="hmove d-flex">
+            <div class="hitem text-center"> 18 ذو القعدة 1442هـ الموافق 27 يونيو </div>
+            <div class="hitem text-center"> 18 ذو القعدة 1442هـ الموافق 27 يونيو </div>
+            <div class="hitem text-center"> 18 ذو القعدة 1442هـ الموافق 27 يونيو </div>
+            <div class="hitem text-center"> 18 ذو القعدة 1442هـ الموافق 27 يونيو </div>
+            <div class="hitem text-center"> 18 ذو القعدة 1442هـ الموافق 27 يونيو </div>
+            <div class="hitem text-center"> 18 ذو القعدة 1442هـ الموافق 27 يونيو </div>
+        </div>
+    </div>
+</div>

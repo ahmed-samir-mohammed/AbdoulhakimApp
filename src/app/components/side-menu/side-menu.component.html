@@ -1,0 +1,18 @@
+<div class="share__card mb-3">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex w-100">
+                    <ul class="list-unstyled w-100 d-flex flex-column p-0 mb-0">
+                        <li *ngFor="let item of SideMenuist">
+                            <a routerLinkActive="routerLinkActive" [routerLinkActiveOptions]="{exact: true}"
+                                routerLink="{{item.routerLink}}">
+                                {{item.name}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
