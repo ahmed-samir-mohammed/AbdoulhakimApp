@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MediaDetailService } from 'src/app/shared/services/media-detail-service';
+import { PublicService } from 'src/app/shared/services/public.service';
 
 @Component({
   selector: 'app-left-column',
@@ -20,7 +23,8 @@ export class LeftColumnComponent implements OnInit {
     { header: 'اعلان' },
   ];
 
-  constructor() {}
+  constructor(private router: Router,
+    private activeRoute: ActivatedRoute, private _service: MediaDetailService, private _publicService: PublicService) {}
 
   ngOnInit(): void {}
 }

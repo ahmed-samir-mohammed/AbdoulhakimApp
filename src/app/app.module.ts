@@ -12,6 +12,8 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AnotherPageComponent } from './pages/another-page/another-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MediaDetailService } from './shared/services/media-detail-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LeftColumnComponent,
     SideMenuComponent,
     HomeComponent,
-    AnotherPageComponent,
+    AnotherPageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
+  providers: [MediaDetailService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

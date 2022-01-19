@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MediaDetailService } from 'src/app/shared/services/media-detail-service';
 
 @Component({
   selector: 'app-side-menu',
@@ -45,7 +47,9 @@ export class SideMenuComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private router: Router,
+    private activeRoute: ActivatedRoute, private _service: MediaDetailService) {}
+
 
   ngOnInit(): void {}
 }

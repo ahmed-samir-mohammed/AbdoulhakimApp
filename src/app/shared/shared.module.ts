@@ -1,17 +1,18 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { MediaDetailService } from './services/media-detail-service';
 
 
-import { ComboBoxModule } from '@syncfusion/ej2-angular-dropdowns';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,ComboBoxModule ,
+    CommonModule ,HttpClientModule
   ],schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
   ],
-  exports:[]
+  exports:[MediaDetailService]
 })
 export class SharedModule { }
