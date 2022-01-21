@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   totalRecordsCount: number;
   pageCount: number;
   data: any;
-  filter: any = { pageNumber: 1, pageSize: 15, title: null, categoryId: null };
+  filter: any = { pageNumber: 1, pageSize: 200, title: null, categoryId: null };
   rootPath: any;
   categoryId: any;
   querySting: any;

@@ -44,8 +44,13 @@ export class NavbarComponent implements OnInit {
       routerLink: '/aa',
     },
   ];
-
+  date: string;
+  date1: string;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.date=  new Intl.DateTimeFormat('ar-EG-u-ca-islamic', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
+
+  this.date1=  new Intl.DateTimeFormat('ar-EG', {day: 'numeric', month: 'long',year : 'numeric'}).format(Date.now());
+  }
 }
