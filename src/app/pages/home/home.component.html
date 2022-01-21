@@ -1,27 +1,38 @@
+<h2>{{querySting}}</h2>
+<br>
 <div class="share__card mb-3">
+
     <div class="container-fluid p-0">
         <div *ngFor="let item of data; index as i;" class="row">
-            <div class="col-12">
+            <div *ngIf="item.extension=='.mp4'" class="col-12">
                 <h4 class="mb-2 mt-2">{{item.title}}</h4>
                 <p>{{item.description}}</p>
-                <!-- <div class="d-flex align-items-center justify-content-center w-100">
-                    <iframe width="100%" height="500px" src="rootPath+item.pathFile"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div> -->
-                <div class="popup">
-                <video  width="800" height="365" controls (canplay)="pauseVideo(videoplayer)" #videoPlayer>
-                    <source src="{{rootPath+item.pathFile }}" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+
+                <div  class="popup">
+                    <video width="800" height="365" controls #videoPlayer>
+                        <source src="{{rootPath+item.pathFile }}" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+               
             </div>
-        </div>
+            <div *ngIf="item.extension=='.mp3'" class="col-12">
+                <h4 class="mb-2 mt-2">{{item.title}}</h4>
+                <p>{{item.description}}</p>
+
+               
+                <div  class="d-flex align-items-center justify-content-center w-100">
+                    <audio id="player" class="w-100" controls>
+                        <source src="{{rootPath+item.pathFile }}" type="audio/mp3" />
+                       
+                    </audio>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="share__card mb-3">
+<!-- <div class="share__card mb-3">
     <div class="container-fluid p-0">
         <div class="row">
             <div class="col-12">
@@ -45,8 +56,8 @@
                     الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
                 <div class="d-flex align-items-center justify-content-center w-100">
                     <audio id="player" class="w-100" controls>
-                        <!-- <source src="/path/to/audio.mp3" type="audio/mp3" />
-                        <source src="/path/to/audio.ogg" type="audio/ogg" /> -->
+                        <source src="/path/to/audio.mp3" type="audio/mp3" />
+                        <source src="/path/to/audio.ogg" type="audio/ogg" />
                     </audio>
                 </div>
             </div>
@@ -63,11 +74,11 @@
                     الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.</p>
                 <div class="d-flex align-items-center justify-content-center w-100">
                     <audio id="player" class="w-100" controls>
-                        <!-- <source src="/path/to/audio.mp3" type="audio/mp3" />
-                        <source src="/path/to/audio.ogg" type="audio/ogg" /> -->
+                        <source src="/path/to/audio.mp3" type="audio/mp3" />
+                        <source src="/path/to/audio.ogg" type="audio/ogg" />
                     </audio>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> -->
