@@ -14,7 +14,7 @@ import { AnotherPageComponent } from './pages/another-page/another-page.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MediaDetailService } from './shared/services/media-detail-service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { GridModule } from '@syncfusion/ej2-angular-grids';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AnotherPageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule,  GridModule],
   providers: [MediaDetailService],
   bootstrap: [AppComponent],
 })
