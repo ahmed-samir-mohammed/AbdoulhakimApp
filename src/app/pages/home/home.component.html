@@ -2,7 +2,7 @@
 <br>
 <div class="share__card mb-3">
 
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0" *ngIf="isParent=='false'">
         <div *ngFor="let item of data; index as i;" class="row">
             <div *ngIf="item.extension=='.mp4'" class="col-12">
                 <h4 class="mb-2 mt-2">{{item.title}}</h4>
@@ -30,5 +30,21 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid p-0" *ngIf="isParent=='true'">
+    <ejs-grid [dataSource]='data'  #grid [enableRtl]='true'>
+    <e-columns>
+     
+        <e-column field='name' [customAttributes]='customAttributes' headerText='العنوان' textAlign='Right' width=120>
+        </e-column>
+
+        <e-column field='visitCount' [customAttributes]='customAttributes' headerText='الزيارات' textAlign='Right'
+            width=90></e-column>
+
+      
+    </e-columns>
+</ejs-grid>
+<ejs-pager #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
+    [totalRecordsCount]='totalRecordsCount' (click)="changePage($event)"></ejs-pager>
+</div>
 </div>
 

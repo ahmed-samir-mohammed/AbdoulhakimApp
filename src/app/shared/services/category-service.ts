@@ -33,6 +33,8 @@ export class CategoryService {
     return this._httpClient.get<any>(environment.apiUrl + "/Category/Delete", { params: params});
   } 
 
- 
+  getAllByCategoryId(filter:any):Observable<any>{
+    return this._httpClient.post<any>(environment.apiUrl + "/Category/GetAllByCategoryId",filter);
+  }
  
 }

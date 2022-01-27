@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FilterService, GridComponent, PagerComponent, PageService, SortService, ToolbarService } from '@syncfusion/ej2-angular-grids';
 import { MediaDetailService } from 'src/app/shared/services/media-detail-service';
 import { SharedService } from 'src/app/shared/services/SharedService';
 import Swal from 'sweetalert2';
@@ -13,6 +14,8 @@ declare var Plyr: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [PageService, SortService, FilterService, ToolbarService]
 })
 export class HomeComponent implements OnInit {
   selectionsettings: object;
@@ -25,6 +28,11 @@ export class HomeComponent implements OnInit {
   rootPath: any;
   categoryId: any;
   querySting: any;
+  isParent: string;
+  customAttributes: object;
+  @ViewChild('grid') gridObj: GridComponent;
+  @ViewChild("pager") pager: PagerComponent;
+  change: any;
   constructor(private router: Router, private sharedService: SharedService,
     private activeRoute: ActivatedRoute, private _service: MediaDetailService) { }
 
@@ -36,9 +44,11 @@ export class HomeComponent implements OnInit {
       this.querySting = parm['name'];
       if ( this.querySting) {
         this.filter.categoryId = this.sharedService.comp1Val;
+       
         this.serverRootPath();
       }
       else{
+        this.filter.categoryId=localStorage.getItem("categoryId");
         this.serverRootPath();
       }
       
@@ -73,10 +83,25 @@ export class HomeComponent implements OnInit {
       if (res.isSuccess) {
 
         this.rootPath = res.data;
-        this.getData(this.filter);
+        this.isParent=localStorage.getItem("isParent");
+        if(this.sharedService.parentVal!=undefined||this.isParent!=undefined){
+          if(this.sharedService.parentVal!=undefined){
+            this.filter.categoryId = this.sharedService.parentVal;
+          }
+          else{
+            this.filter.categoryId=localStorage.getItem("categoryId");
+          }
+         
+          this.getAllByCategoryId(this.filter);
+        }
+        else{
+          this.getData(this.filter);
+        }
+      
+      
       }
       else {
-        // this.alert.error(res.message);
+        // this.error(res.message);
       }
     })
   }
@@ -98,5 +123,35 @@ export class HomeComponent implements OnInit {
         }
         // this.form.reset();
       })
+  }
+  getAllByCategoryId(filter) {
+    
+  
+    this._service.getAllByCategoryId(filter)
+      .subscribe(res => {
+        if (res.isSuccess) {
+
+          this.data = res.data;
+          this.totalRecordsCount = res.totalRecordsCount;
+          this.pageCount = res.pageCount > 5 ? 5 : res.pageCount;
+          this.pageSize = res.pageSize;
+
+        } else {
+          Swal.fire("حدث مشكلة", null, "error");
+        }
+        // this.form.reset();
+      })
+  }
+  changePage(event) {
+
+    if (this.change) {
+      if (event.currentPage) {
+
+        this.filter.pageNumber = event.currentPage;
+        this.getData(this.filter);
+        return;
+      }
+    }
+    this.change = event.pointerType;
   }
 }

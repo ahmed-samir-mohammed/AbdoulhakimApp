@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MediaDetailService } from './shared/services/media-detail-service';
 import { HttpClientModule } from '@angular/common/http';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { PageService, SortService, FilterService, GroupService } from '@syncfusion/ej2-angular-grids';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,14 @@ import { GridModule } from '@syncfusion/ej2-angular-grids';
     AnotherPageComponent
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule,  GridModule],
-  providers: [MediaDetailService],
+  providers: [MediaDetailService,PageService,
+    SortService,
+    FilterService,
+    GroupService],
+    schemas: [
+      CUSTOM_ELEMENTS_SCHEMA,
+      NO_ERRORS_SCHEMA
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

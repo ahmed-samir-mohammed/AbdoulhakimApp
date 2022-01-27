@@ -40,6 +40,8 @@ export class MediaDetailService {
       responseType: 'blob'
     })
   }
- 
+  getAllByCategoryId(filter:any):Observable<any>{
+    return this._httpClient.post<any>(environment.apiUrl + "/Category/GetAllByCategoryId",filter);
+  }
  
 }

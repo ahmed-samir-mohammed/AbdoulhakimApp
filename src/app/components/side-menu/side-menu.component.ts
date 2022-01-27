@@ -60,6 +60,7 @@ export class SideMenuComponent implements OnInit {
     pageCount: number;
     filter: any = { pageNumber: 1, pageSize: 1000, name: null };
   ngOnInit(): void {
+   // localStorage.clear();
     this.getData(this.filter);
   }
   getData(filter) {
@@ -80,9 +81,25 @@ export class SideMenuComponent implements OnInit {
       })
   }
   route(category){
-    
-    this.sharedService.updateComp1Val(category.categoryId);
+    localStorage.setItem("categoryId",category.categoryId)
+    if(category.isParent){
+      this.sharedService.updatePArentVal(category.categoryId);
+      localStorage.setItem("isParent",category.isParent)
+    }
+    else{
+      this.sharedService.updateComp1Val(category.categoryId);
+      localStorage.removeItem("isParent")
+    }
+   
+   
     this.router.navigate([], { relativeTo: this.activeRoute, queryParams: { name: category.name }, replaceUrl: true })
    // this.router.navigateByUrl('/home?id=' + id)
   }
+//   getDataCategroy(category){
+    
+//    // this.sharedService.updateComp1Val(category.categoryId);
+//    // localStorage.setItem("categoryId",category.categoryId)
+//  //   this.router.navigate([], { relativeTo: this.activeRoute, queryParams: { name: category.name }, replaceUrl: true })
+//     this.router.navigateByUrl('/Management/SubCategory?name=' +  category.name)
+//   }
 }
