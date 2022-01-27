@@ -1,13 +1,13 @@
 <app-side-menu></app-side-menu>
 
-<div class="share__card mb-3" *ngFor="let item of rightSideList">
+<div class="share__card mb-3" *ngFor="let item of data">
     <div class="container-fluid p-0">
         <div class="row">
             <div class="col-12">
-                <h5 [ngClass]="{'mb-0': !item.textName}" *ngIf="item.header">{{item.header}}</h5>
-                <p [ngClass]="{'mb-0': !item.img}" *ngIf="item.textName">{{item.textName}}</p>
+                <h5 [ngClass]="{'mb-0': !item.title}" *ngIf="item.title">{{item.title}}</h5>
+                <p [ngClass]="{'mb-0': !item.img}" *ngIf="item.description">{{item.description}}</p>
                 <div class="d-flex align-items-center justify-content-center w-100">
-                    <img class="w-100" *ngIf="item.img" src="{{item.img}}" alt="">
+                    <img class="w-100"  src="{{rootPath+item.pathFile }}" alt="">
                 </div>
             </div>
         </div>

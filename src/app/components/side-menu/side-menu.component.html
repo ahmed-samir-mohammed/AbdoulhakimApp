@@ -4,9 +4,8 @@
             <div class="col-12">
                 <div class="d-flex w-100">
                     <ul class="list-unstyled w-100 d-flex flex-column p-0 mb-0">
-                        <li *ngFor="let item of SideMenuist">
-                            <a routerLinkActive="routerLinkActive" [routerLinkActiveOptions]="{exact: true}"
-                                routerLink="{{item.routerLink}}">
+                        <li *ngFor="let item of data">
+                            <a  (click)="route(item)">
                                 {{item.name}}
                             </a>
                         </li>

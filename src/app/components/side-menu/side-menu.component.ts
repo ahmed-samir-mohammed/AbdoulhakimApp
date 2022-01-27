@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from 'src/app/shared/services/category-service';
+import { MediaDetailService } from 'src/app/shared/services/media-detail-service';
+import { SharedService } from 'src/app/shared/services/SharedService';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-side-menu',
@@ -45,7 +50,56 @@ export class SideMenuComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private router: Router,private sharedService: SharedService,
+    private activeRoute: ActivatedRoute, private _service: CategoryService) {}
 
-  ngOnInit(): void {}
+    data: object[];
+    pageSize: number;
+    currentPage: number;
+    totalRecordsCount: number;
+    pageCount: number;
+    filter: any = { pageNumber: 1, pageSize: 1000, name: null };
+  ngOnInit(): void {
+   // localStorage.clear();
+    this.getData(this.filter);
+  }
+  getData(filter) {
+
+    this._service.getAll(filter)
+      .subscribe(res => {
+        if (res.isSuccess) {
+
+          this.data = res.data;
+          this.totalRecordsCount = res.totalRecordsCount;
+          this.pageCount = res.pageCount>5?5: res.pageCount;
+          this.pageSize = res.pageSize;
+
+        } else {
+          Swal.fire("حدث مشكلة", null, "error");
+        }
+      
+      })
+  }
+  route(category){
+    localStorage.setItem("categoryId",category.categoryId)
+    if(category.isParent){
+      this.sharedService.updatePArentVal(category.categoryId);
+      localStorage.setItem("isParent",category.isParent)
+    }
+    else{
+      this.sharedService.updateComp1Val(category.categoryId);
+      localStorage.removeItem("isParent")
+    }
+   
+   
+    this.router.navigate([], { relativeTo: this.activeRoute, queryParams: { name: category.name }, replaceUrl: true })
+   // this.router.navigateByUrl('/home?id=' + id)
+  }
+//   getDataCategroy(category){
+    
+//    // this.sharedService.updateComp1Val(category.categoryId);
+//    // localStorage.setItem("categoryId",category.categoryId)
+//  //   this.router.navigate([], { relativeTo: this.activeRoute, queryParams: { name: category.name }, replaceUrl: true })
+//     this.router.navigateByUrl('/Management/SubCategory?name=' +  category.name)
+//   }
 }
