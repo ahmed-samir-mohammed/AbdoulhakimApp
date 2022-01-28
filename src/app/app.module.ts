@@ -14,7 +14,7 @@ import { AnotherPageComponent } from './pages/another-page/another-page.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MediaDetailService } from './shared/services/media-detail-service';
 import { HttpClientModule } from '@angular/common/http';
-import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
 import { PageService, SortService, FilterService, GroupService } from '@syncfusion/ej2-angular-grids';
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { PageService, SortService, FilterService, GroupService } from '@syncfusi
     HomeComponent,
     AnotherPageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule,  GridModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,HttpClientModule,  GridModule,PagerModule ],
   providers: [MediaDetailService,PageService,
     SortService,
     FilterService,

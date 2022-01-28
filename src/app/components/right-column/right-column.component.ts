@@ -24,15 +24,15 @@ export class RightColumnComponent implements OnInit {
     { header: 'اعلان' },
   ];
   rootPath: any;
-  constructor(private router: Router,private sharedService: SharedService,
-    private activeRoute: ActivatedRoute, private _service: AdvertismentService) {}
+  constructor(private router: Router, private sharedService: SharedService,
+    private activeRoute: ActivatedRoute, private _service: AdvertismentService) { }
 
-    data: object[];
-    pageSize: number;
-    currentPage: number;
-    totalRecordsCount: number;
-    pageCount: number;
-    filter: any = { pageNumber: 1, pageSize: 1000, title: null };
+  data: object[];
+  pageSize: number;
+  currentPage: number;
+  totalRecordsCount: number;
+  pageCount: number;
+  filter: any = { pageNumber: 1, pageSize: 1000, title: null };
   ngOnInit(): void {
     this.serverRootPath();
   }
@@ -56,13 +56,13 @@ export class RightColumnComponent implements OnInit {
 
           this.data = res.data;
           this.totalRecordsCount = res.totalRecordsCount;
-          this.pageCount = res.pageCount>5?5: res.pageCount;
+          this.pageCount = res.pageCount > 5 ? 5 : res.pageCount;
           this.pageSize = res.pageSize;
 
         } else {
           Swal.fire("حدث مشكلة", null, "error");
         }
-      
+
       })
   }
 }

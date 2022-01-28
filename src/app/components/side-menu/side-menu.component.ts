@@ -81,19 +81,20 @@ export class SideMenuComponent implements OnInit {
       })
   }
   route(category){
-    localStorage.setItem("categoryId",category.categoryId)
+  
     if(category.isParent){
-      this.sharedService.updatePArentVal(category.categoryId);
-      localStorage.setItem("isParent",category.isParent)
+      this.router.navigateByUrl("/?name="+ category.name+"&parentId="+category.categoryId)
+    //  this.router.navigate([], { relativeTo: this.activeRoute, queryParams: { name: category.name,parentId:category.categoryId }, replaceUrl: true })
+ 
     }
     else{
-      this.sharedService.updateComp1Val(category.categoryId);
-      localStorage.removeItem("isParent")
+      this.router.navigateByUrl("/?name="+ category.name+"&categoryId="+category.categoryId)
+    //  this.router.navigate([], { relativeTo: this.activeRoute, queryParams: { name: category.name,categoryId:category.categoryId }, replaceUrl: true })
+
     }
    
    
-    this.router.navigate([], { relativeTo: this.activeRoute, queryParams: { name: category.name }, replaceUrl: true })
-   // this.router.navigateByUrl('/home?id=' + id)
+     // this.router.navigateByUrl('/home?id=' + id)
   }
 //   getDataCategroy(category){
     
