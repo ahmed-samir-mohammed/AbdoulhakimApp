@@ -42,13 +42,20 @@ export class HomeComponent implements OnInit {
 
     // this.filter.categoryId = this.activeRoute.snapshot.queryParams['id']
     this.activeRoute.queryParams.subscribe(parm => {
-
+debugger
       this.querySting = parm['name'];
+     let searchName=parm['searchName']
       if (this.querySting) {
-
+        this.filter.name=null
         this.serverRootPath();
       }
-      else {
+      else if (searchName!= undefined) {
+        this.isParent=false;
+       this.filter.title = searchName;
+       this.filter.categoryId=null;
+        this.getData(this.filter);
+      }
+      else  if (this.querySting==undefined &&searchName== undefined){
         this.serverRootPath();
       }
 
@@ -83,6 +90,7 @@ export class HomeComponent implements OnInit {
       if (res.isSuccess) {
         this.rootPath = res.data;
       let  parentId= this.activeRoute.snapshot.queryParams['parentId']
+      
         if (parentId!= undefined) {
           this.isParent=true;
           this.filter.categoryId = parentId;
@@ -176,7 +184,20 @@ export class HomeComponent implements OnInit {
     {
       this.router.navigateByUrl("/?name="+ category.name+"&categoryId="+category.categoryId)
     }
-   
+    this._service.addVisitCount(category)
+    .subscribe(res => {
+      if (res.isSuccess) {
+
+        // this.data = res.data;
+        // this.totalRecordsCount = res.totalRecordsCount;
+        // this.pageCount = res.pageCount > 5 ? 5 : res.pageCount;
+        // this.pageSize = res.pageSize;
+
+      } else {
+        Swal.fire("حدث مشكلة", null, "error");
+      }
+      // this.form.reset();
+    })
    
      // this.router.navigateByUrl('/home?id=' + id)
   }

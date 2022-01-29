@@ -43,5 +43,7 @@ export class MediaDetailService {
   getAllByCategoryId(filter:any):Observable<any>{
     return this._httpClient.post<any>(environment.apiUrl + "/Category/GetAllByCategoryId",filter);
   }
- 
+  addVisitCount(filter:any):Observable<any>{
+    return this._httpClient.post<any>(environment.apiUrl + "/Category/AddVisitCount",filter);
+  }
 }
