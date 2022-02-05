@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl:'http://localhost:58462/api',
-  urlReport:'http://localhost:58462'
+  apiUrl:'http://mahmoudabd2345-002-site1.ctempurl.com/api',
+  url:'http://mahmoudabd2345-002-site1.ctempurl.com'
 };

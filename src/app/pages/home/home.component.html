@@ -29,7 +29,7 @@
                 </div>
             </div>
                   </div>
-                  <ejs-pager  *ngIf="isParent==false" #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
+                  <ejs-pager *ngIf="data?.length>0"  #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
                   [totalRecordsCount]='totalRecordsCount' (click)="changePage($event)"></ejs-pager>
       
     </div>
@@ -50,7 +50,7 @@
 
             </e-columns>
         </ejs-grid>
-        <ejs-pager  *ngIf="isParent==true" #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
+        <ejs-pager *ngIf="data?.length>0" #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
             [totalRecordsCount]='totalRecordsCount' (click)="changeListPage($event)"></ejs-pager>
     </div>
 </div>
