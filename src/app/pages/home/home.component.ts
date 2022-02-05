@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { L10n, setCulture } from '@syncfusion/ej2-base';
 import '../../../assets/js/audio-playr.js';
 import { Locales } from 'src/app/shared/helper/constants';
+import { environment } from 'src/environments/environment';
 setCulture('ar-AE');
 L10n.load(Locales.getLocaleObjects())
 declare var Plyr: any;
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
   rootPath: any;
   categoryId: any;
   querySting: any;
-  isParent=false;
+  isParent=true;
   customAttributes: object;
   @ViewChild('grid') gridObj: GridComponent;
   @ViewChild("pager") pager: PagerComponent;
@@ -53,6 +54,8 @@ debugger
         this.isParent=false;
        this.filter.title = searchName;
        this.filter.categoryId=null;
+       this.querySting="نتائج البحث"
+       this.rootPath=environment.apiUrl +"/wwwroot/Media/"
         this.getData(this.filter);
       }
       else  if (this.querySting==undefined &&searchName== undefined){
@@ -88,6 +91,7 @@ debugger
   serverRootPath() {
     this._service.serverRootPath().subscribe(res => {
       if (res.isSuccess) {
+        debugger
         this.rootPath = res.data;
       let  parentId= this.activeRoute.snapshot.queryParams['parentId']
       

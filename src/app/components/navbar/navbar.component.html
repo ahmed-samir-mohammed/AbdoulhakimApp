@@ -7,10 +7,10 @@
                 </div>
             </div>
             <div class="col-6 d-flex justify-content-end">
-                <form class="w-50">
+                <form (submit)="route(searchName.value)" class="w-50">
                     <label for="upper_bar-sarch" class="w-100 d-flex align-items-center">
                         <i class="fas fa-search"></i>
-                        <input  class="upper_bar-sarch"   id="upper_bar-sarch"  type="search" placeholder="ابحث هنا...">
+                        <input #searchName class="upper_bar-sarch"   id="upper_bar-sarch"  type="search" placeholder="ابحث هنا...">
                     </label>
                 </form>
             </div>

@@ -60,9 +60,11 @@ export class NavbarComponent implements OnInit {
     debugger
     if((searchName!=undefined&&searchName!=""))
     {
-     // this.router.navigateByUrl("/home?searchName="+ searchName)
+      this.router.navigateByUrl("/home?searchName="+ searchName)
     }
-    
-
+    else{
+      this.router.navigateByUrl("/home")
+    }
+    return false
   }
 }
