@@ -121,7 +121,7 @@ debugger
     this._service.getAll(filter)
       .subscribe(res => {
         if (res.isSuccess) {
-
+debugger
           this.data = res.data;
           this.totalRecordsCount = res.totalRecordsCount;
           this.pageCount = res.pageCount > 5 ? 5 : res.pageCount;

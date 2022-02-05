@@ -28,10 +28,22 @@
                     </audio>
                 </div>
             </div>
-                  </div>
-                  <ejs-pager *ngIf="data?.length>0"  #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
-                  [totalRecordsCount]='totalRecordsCount' (click)="changePage($event)"></ejs-pager>
-      
+            <div *ngIf="item.extension=='.pdf'||item.extension=='.xls'||item.extension=='.txt'||item.extension=='.ppt'"
+                class="col-12">
+                <span style="margin-right: 300px;">{{item.description}}</span>
+                <span>
+
+                    <a [href]="rootPath+item.pathFile" target="_blank">
+                        {{item.title}}
+                    </a>
+                   
+                </span>
+              
+            </div>
+        </div>
+        <ejs-pager *ngIf="data?.length>0" #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
+            [totalRecordsCount]='totalRecordsCount' (click)="changePage($event)"></ejs-pager>
+
     </div>
     <div class="container-fluid p-0" *ngIf="isParent==true">
         <ejs-grid [dataSource]='data' #grid [enableRtl]='true'>
@@ -40,7 +52,7 @@
                 <e-column field='name' [customAttributes]='customAttributes' headerText='العنوان' textAlign='Right'
                     width=120>
                     <ng-template #template let-data>
-                        <a   href="javascript: void(0);" style="cursor:pointer"  (click)="route(data)">{{data.name}}</a>
+                        <a href="javascript: void(0);" style="cursor:pointer" (click)="route(data)">{{data.name}}</a>
                     </ng-template>
                 </e-column>
 
