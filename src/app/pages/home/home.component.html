@@ -52,7 +52,7 @@
                 <e-column field='name' [customAttributes]='customAttributes' headerText='العنوان' textAlign='Right'
                     width=120>
                     <ng-template #template let-data>
-                        <a href="javascript: void(0);" style="cursor:pointer" (click)="route(data)">{{data.name}}</a>
+                        <a href="javascript: void(0);" style="cursor:pointer;text-decoration:none" (click)="route(data)">{{data.name}}</a>
                     </ng-template>
                 </e-column>
 

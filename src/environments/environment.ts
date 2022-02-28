@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://mahmoudabd2345-002-site1.ctempurl.com/api',
-  url:'http://mahmoudabd2345-002-site1.ctempurl.com'
+  // apiUrl:'http://mahmoudabd2345-002-site1.ctempurl.com/api',
+  // url:'http://mahmoudabd2345-002-site1.ctempurl.com'
+  apiUrl:'http://localhost:58462/api',
+  url:'http://localhost:58462'
 };
 /*
  * For easier debugging in development mode, you can import the following file

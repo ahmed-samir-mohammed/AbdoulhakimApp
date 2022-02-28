@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
 
     // this.filter.categoryId = this.activeRoute.snapshot.queryParams['id']
     this.activeRoute.queryParams.subscribe(parm => {
-debugger
+
       this.querySting = parm['name'];
      let searchName=parm['searchName']
       if (this.querySting) {
@@ -51,12 +51,12 @@ debugger
         this.serverRootPath();
       }
       else if (searchName!= undefined) {
-        this.isParent=false;
-       this.filter.title = searchName;
+        this.isParent=true;
+       this.filter.name = searchName;
        this.filter.categoryId=null;
        this.querySting="نتائج البحث"
        this.rootPath=environment.apiUrl +"/wwwroot/Media/"
-        this.getData(this.filter);
+        this.getAllByCategoryId(this.filter);
       }
       else  if (this.querySting==undefined &&searchName== undefined){
         this.serverRootPath();
@@ -121,7 +121,7 @@ debugger
     this._service.getAll(filter)
       .subscribe(res => {
         if (res.isSuccess) {
-debugger
+
           this.data = res.data;
           this.totalRecordsCount = res.totalRecordsCount;
           this.pageCount = res.pageCount > 5 ? 5 : res.pageCount;

@@ -20,7 +20,9 @@ export class MediaDetailService {
   getAll(filter):Observable<ResponseData>{
     return this._httpClient.post<any>(environment.apiUrl + "/MediaDetail/GetAll",filter);
   } 
-
+  getAllBar(filter):Observable<ResponseData>{
+    return this._httpClient.post<any>(environment.apiUrl + "/MediaDetail/GetAllBar",filter);
+  } 
   getById(id:any):Observable<any>{
     let params = new HttpParams();
     params = params.append('id', id);

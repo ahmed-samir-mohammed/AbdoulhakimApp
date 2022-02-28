@@ -36,5 +36,10 @@ export class CategoryService {
   getAllByCategoryId(filter:any):Observable<any>{
     return this._httpClient.post<any>(environment.apiUrl + "/Category/GetAllByCategoryId",filter);
   }
- 
+  getAllBar(filter):Observable<ResponseData>{
+    return this._httpClient.post<any>(environment.apiUrl + "/Category/GetAllBar",filter);
+  } 
+  getAllChoose(filter):Observable<ResponseData>{
+    return this._httpClient.post<any>(environment.apiUrl + "/Category/GetAllChoose",filter);
+  } 
 }

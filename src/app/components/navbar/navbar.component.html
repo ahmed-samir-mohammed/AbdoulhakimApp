@@ -47,12 +47,15 @@
 <div class="container mb-4">
     <div class="hwrap overflow-hidden">
         <div class="hmove d-flex">
-            <div class="hitem text-center">  {{date}} الموافق   {{date1}} </div>
-            <div class="hitem text-center">  {{date}} الموافق   {{date1}} </div>
-            <div class="hitem text-center">  {{date}} الموافق   {{date1}} </div>
-            <div class="hitem text-center">  {{date}} الموافق   {{date1}} </div>
-            <div class="hitem text-center">  {{date}} الموافق   {{date1}} </div>
-            <div class="hitem text-center">  {{date}} الموافق   {{date1}} </div>
+            
+            <div class="hitem text-center"  *ngFor="let item of data; index as i;"> 
+                  <a href="javascript: void(0);" style="cursor:pointer;text-decoration:none" (click)="routeBar(item)">{{item.name}}</a> 
+                </div>
+            <!-- <div class="hitem text-center"> {{data[0].name}} </div>
+            <div class="hitem text-center">  {{data[0].name}} </div>
+            <div class="hitem text-center">  {{data[0].name}} </div>
+            <div class="hitem text-center">   {{data[0].name}} </div>
+            <div class="hitem text-center">  {{data[0].name}}</div> -->
         </div>
     </div>
 </div>
