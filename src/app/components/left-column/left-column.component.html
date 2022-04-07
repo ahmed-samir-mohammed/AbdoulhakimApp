@@ -1,11 +1,31 @@
-<div class="share__card mb-3" *ngFor="let item of leftSideList">
+<!-- <div class="share__card mb-3" *ngFor="let item of data">
     <div class="container-fluid p-0">
         <div class="row">
-            <div class="col-12">
+             <div class="col-12">
                 <h5 [ngClass]="{'mb-0': !item.textName}" *ngIf="item.header">{{item.header}}</h5>
                 <p [ngClass]="{'mb-0': !item.img}" *ngIf="item.textName">{{item.textName}}</p>
                 <div class="d-flex align-items-center justify-content-center w-100">
                     <img class="w-100" *ngIf="item.img" src="{{item.img}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+اخترنا لك
+<div class="share__card mb-3">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex w-100">
+                    <ul class="list-unstyled w-100 d-flex flex-column p-0 mb-0">
+                        <li *ngFor="let item of data">
+                            <!-- <a  (click)="route(item)">
+                                {{item.name}}
+                            </a> -->
+                            <a href="javascript: void(0);" style="cursor:pointer;text-decoration:none" (click)="route(item)">{{item.name}}</a>
+
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -2,49 +2,67 @@
 <br>
 <div class="share__card mb-3">
 
-    <div class="container-fluid p-0" *ngIf="isParent=='false'">
+    <div class="container-fluid p-0" *ngIf="isParent==false">
         <div *ngFor="let item of data; index as i;" class="row">
             <div *ngIf="item.extension=='.mp4'" class="col-12">
                 <h4 class="mb-2 mt-2">{{item.title}}</h4>
                 <p>{{item.description}}</p>
 
-                <div  class="popup">
+                <div class="popup">
                     <video width="800" height="365" controls #videoPlayer>
                         <source src="{{rootPath+item.pathFile }}" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>
-               
+
             </div>
             <div *ngIf="item.extension=='.mp3'" class="col-12">
                 <h4 class="mb-2 mt-2">{{item.title}}</h4>
                 <p>{{item.description}}</p>
 
-               
-                <div  class="d-flex align-items-center justify-content-center w-100">
+
+                <div class="d-flex align-items-center justify-content-center w-100">
                     <audio id="player" class="w-100" controls>
                         <source src="{{rootPath+item.pathFile }}" type="audio/mp3" />
-                       
+
                     </audio>
                 </div>
             </div>
+            <div *ngIf="item.extension=='.pdf'||item.extension=='.xls'||item.extension=='.txt'||item.extension=='.ppt'"
+                class="col-12">
+                <span style="margin-right: 300px;">{{item.description}}</span>
+                <span>
+
+                    <a [href]="rootPath+item.pathFile" target="_blank">
+                        {{item.title}}
+                    </a>
+                   
+                </span>
+              
+            </div>
         </div>
+        <ejs-pager *ngIf="data?.length>0" #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
+            [totalRecordsCount]='totalRecordsCount' (click)="changePage($event)"></ejs-pager>
+
     </div>
-    <div class="container-fluid p-0" *ngIf="isParent=='true'">
-    <ejs-grid [dataSource]='data'  #grid [enableRtl]='true'>
-    <e-columns>
-     
-        <e-column field='name' [customAttributes]='customAttributes' headerText='العنوان' textAlign='Right' width=120>
-        </e-column>
+    <div class="container-fluid p-0" *ngIf="isParent==true">
+        <ejs-grid [dataSource]='data' #grid [enableRtl]='true'>
+            <e-columns>
 
-        <e-column field='visitCount' [customAttributes]='customAttributes' headerText='الزيارات' textAlign='Right'
-            width=90></e-column>
+                <e-column field='name' [customAttributes]='customAttributes' headerText='العنوان' textAlign='Right'
+                    width=120>
+                    <ng-template #template let-data>
+                        <a href="javascript: void(0);" style="cursor:pointer;text-decoration:none" (click)="route(data)">{{data.name}}</a>
+                    </ng-template>
+                </e-column>
 
-      
-    </e-columns>
-</ejs-grid>
-<ejs-pager #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
-    [totalRecordsCount]='totalRecordsCount' (click)="changePage($event)"></ejs-pager>
+                <e-column field='visitCount' [customAttributes]='customAttributes' headerText='الزيارات'
+                    textAlign='Right' width=90></e-column>
+
+
+            </e-columns>
+        </ejs-grid>
+        <ejs-pager *ngIf="data?.length>0" #pager [enableRtl]='true' [pageSize]='pageSize' [pageCount]='pageCount'
+            [totalRecordsCount]='totalRecordsCount' (click)="changeListPage($event)"></ejs-pager>
+    </div>
 </div>
-</div>
-

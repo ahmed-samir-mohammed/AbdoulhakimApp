@@ -13,29 +13,29 @@ import { ResponseData } from '../models/ResponseData';
     constructor(private _httpClient: HttpClient) { }
    
   
-    createUpdate(Advertisment: any):Observable<ResponseData>{
-      return this._httpClient.post<any>(environment.apiUrl + "/Advertisment/CreateUpdate", Advertisment);
+    createUpdate(AdvertismentSite: any):Observable<ResponseData>{
+      return this._httpClient.post<any>(environment.apiUrl + "/AdvertismentSite/CreateUpdate", AdvertismentSite);
     } 
   
     getAll(filter):Observable<ResponseData>{
-      return this._httpClient.post<any>(environment.apiUrl + "/Advertisment/GetAll",filter);
+      return this._httpClient.post<any>(environment.apiUrl + "/AdvertismentSite/GetAll",filter);
     } 
     getAllDash(filter):Observable<ResponseData>{
-      return this._httpClient.post<any>(environment.apiUrl + "/Advertisment/GetAllDash",filter);
+      return this._httpClient.post<any>(environment.apiUrl + "/AdvertismentSite/GetAllDash",filter);
     } 
     getById(id:any):Observable<any>{
       let params = new HttpParams();
       params = params.append('id', id);
-      return this._httpClient.get<any>(environment.apiUrl + "/Advertisment/GetById", { params: params});
+      return this._httpClient.get<any>(environment.apiUrl + "/AdvertismentSite/GetById", { params: params});
     } 
   
     delete(id: any):Observable<any>{
       let params = new HttpParams();
       params = params.append('id', id);
-      return this._httpClient.get<any>(environment.apiUrl + "/Advertisment/Delete", { params: params});
+      return this._httpClient.get<any>(environment.apiUrl + "/AdvertismentSite/Delete", { params: params});
     } 
     serverRootPath(): Observable<ResponseData> {
-      return this._httpClient.get<any>(environment.apiUrl + '/Advertisment/ServerRootPath' );
+      return this._httpClient.get<any>(environment.apiUrl + '/AdvertismentSite/ServerRootPath' );
     }
     download(url: string): Observable<Blob> {
       return this._httpClient.get(url, {
