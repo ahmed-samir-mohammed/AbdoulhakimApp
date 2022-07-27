@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
   serverRootPath() {
     this._service.serverRootPath().subscribe(res => {
       if (res.isSuccess) {
-        debugger
+        
         this.rootPath = res.data;
       let  parentId= this.activeRoute.snapshot.queryParams['parentId']
       
@@ -123,6 +123,7 @@ export class HomeComponent implements OnInit {
         if (res.isSuccess) {
 
           this.data = res.data;
+        
           this.totalRecordsCount = res.totalRecordsCount;
           this.pageCount = res.pageCount > 5 ? 5 : res.pageCount;
           this.pageSize = res.pageSize;
@@ -141,6 +142,10 @@ export class HomeComponent implements OnInit {
         if (res.isSuccess) {
 
           this.data = res.data;
+          if(res.data.length>0&&res.data[0].mediaDetailId!=undefined){
+            this.rootPath=environment.url +"/wwwroot/Media/"
+            this.isParent=false;
+          }
           this.totalRecordsCount = res.totalRecordsCount;
           this.pageCount = res.pageCount > 5 ? 5 : res.pageCount;
           this.pageSize = res.pageSize;
@@ -176,6 +181,7 @@ export class HomeComponent implements OnInit {
     this.change = event.pointerType;
   }
   route(category){
+    debugger
    // const category = this.gridObj.getRowInfo(event.target).rowData as any;
     if(category.isParent){
     
