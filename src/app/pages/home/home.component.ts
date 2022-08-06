@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('grid') gridObj: GridComponent;
   @ViewChild("pager") pager: PagerComponent;
   change: any;
+  dataContact: any;
   constructor(private router: Router, private sharedService: SharedService,
     private activeRoute: ActivatedRoute, private _service: MediaDetailService) { }
 
@@ -210,5 +211,21 @@ export class HomeComponent implements OnInit {
     })
    
      // this.router.navigateByUrl('/home?id=' + id)
+  }
+  getAllContact(filter) {
+
+
+    this._service.getAllContact(filter)
+      .subscribe(res => {
+        if (res.isSuccess) {
+
+          this.dataContact = res.data;
+        
+
+        } else {
+          Swal.fire("حدث مشكلة", null, "error");
+        }
+        // this.form.reset();
+      })
   }
 }

@@ -48,4 +48,10 @@ export class MediaDetailService {
   addVisitCount(filter:any):Observable<any>{
     return this._httpClient.post<any>(environment.apiUrl + "/CategorySite/AddVisitCount",filter);
   }
+  getAllContact(filter):Observable<ResponseData>{
+    return this._httpClient.post<any>(environment.apiUrl + "/CategorySite/GetAllContact",filter);
+  } 
+  serverRootPathConcat(): Observable<ResponseData> {
+    return this._httpClient.get<any>(environment.apiUrl + '/CategorySite/ServerRootPath' );
+  }
 }
