@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/shared/services/category-service';
 import { MediaDetailService } from 'src/app/shared/services/media-detail-service';
 import { PublicService } from 'src/app/shared/services/public.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,19 +12,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./left-column.component.scss'],
 })
 export class LeftColumnComponent implements OnInit {
-  leftSideList: any[] = [
-    {
-      header: 'اعلان',
-      textName: 'لصفحة ما سيلهي القارئ عن التركيز على الشك',
-      img: '../../../assets/img/img_1.jpg',
-    },
-    { img: '../../../assets/img/img_1.jpg' },
-    { img: '../../../assets/img/img_1.jpg' },
-    { textName: 'لصفحة ما سيلهي القارئ عن التركيز على الشك' },
-    { header: 'اعلان' },
-    { header: 'اعلان' },
-    { header: 'اعلان' },
-  ];
+
+  dataContact: any;
+  rootPath: any;
 
   constructor(private router: Router,
     private activeRoute: ActivatedRoute, private _serviceMedia: MediaDetailService, private _publicService: PublicService, private _service: CategoryService) {}
@@ -37,6 +28,36 @@ export class LeftColumnComponent implements OnInit {
   ngOnInit(): void {
    // localStorage.clear();
     this.getData(this.filter);
+    this.getAllContact(this.filter)
+    this.rootPath=environment.url +"/wwwroot/Contact/"
+  }
+  serverRootPath() {
+    this._serviceMedia.serverRootPathConcat().subscribe(res => {
+      if (res.isSuccess) {
+
+        this.rootPath = res.data;
+        this.getAllContact(this.filter);
+      }
+      else {
+        Swal.fire("حدث مشكلة", null, "error");
+      }
+    })
+  }
+  getAllContact(filter) {
+
+
+    this._serviceMedia.getAllContact(filter)
+      .subscribe(res => {
+        if (res.isSuccess) {
+
+          this.dataContact = res.data;
+        console.log(res.data)
+
+        } else {
+          Swal.fire("حدث مشكلة", null, "error");
+        }
+        // this.form.reset();
+      })
   }
   getData(filter) {
 
