@@ -1,28 +1,22 @@
 <footer class="py-4 text-center">
-    <div class="container">
-        <div class="mb-0 mx-auto">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-4">
-                    </div>
-                    <div class="col-4">
-                        <div class="d-flex w-50">
-                            <ul class="list-unstyled mb-0 mx-auto" *ngFor="let item of dataContact">
-
-                                <a [href]="item.link" target="_blank" style="cursor:pointer;text-decoration:none"><img
-                                        src={{rootPath+item.pathFile}} alt="" height="50" width="50" /></a>
-
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <div class="mb-0 mx-auto">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center">
+            <ul
+              class="list-unstyled d-flex align-items-center p-0 mb-0 mx-auto"
+            >
+              <li *ngFor="let item of dataContact">
+                <a [href]="item.link" target="_blank"
+                  ><img src="{{ rootPath + item.pathFile }}" alt=""
+                /></a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p class="mb-0 mx-auto">
-            جميع الحقوق محفوظه لموقع الشيخ عبد الحكيم
-        </p>
+      </div>
     </div>
+    <p class="mb-0 mt-3 mx-auto">جميع الحقوق محفوظه لموقع الشيخ عبد الحكيم</p>
+  </div>
 </footer>

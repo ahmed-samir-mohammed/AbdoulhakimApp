@@ -1,67 +1,77 @@
 <div class="upper_bar p-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-4 d-flex align-items-center" >
-                <div class="upper_bar-date">
-                    {{date}} الموافق   {{date1}}
-                </div>
-            </div>
-            <div class="col-4">
-               
-                <a href="/home">
-                    <img src="../../assets/img/3abd.jpeg" class="w-100" alt="">
-                 </a>
-            </div>
-            <div class="col-4 d-flex justify-content-end" >
-                <form (submit)="route(searchName.value)" class="w-50">
-                    <label for="upper_bar-sarch" class="w-100 d-flex align-items-center">
-                        <i class="fas fa-search"></i>
-                        <input #searchName class="upper_bar-sarch"   id="upper_bar-sarch"  type="search" placeholder="ابحث هنا...">
-                    </label>
-                </form>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 d-flex align-items-center">
+        <div class="upper_bar-date">{{ date }} الموافق {{ date1 }}</div>
+      </div>
+      <div class="col-lg-4">
+        <a href="/home">
+          <img src="../../assets/img/3abd.jpeg" class="w-100" alt="" />
+        </a>
+      </div>
+      <div class="col-lg-4 d-flex justify-content-end">
+        <form (submit)="route(searchName.value)">
+          <label for="upper_bar-sarch" class="w-100 d-flex align-items-center">
+            <i class="fas fa-search"></i>
+            <input
+              #searchName
+              class="upper_bar-sarch"
+              id="upper_bar-sarch"
+              type="search"
+              placeholder="ابحث هنا..."
+            />
+          </label>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
-
-
 
 <div class="container d-md-none">
-    <nav class="share__card mb-3 p-2 navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid p-0">
-            <button class="navbar-toggler p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-line mb-1"></span>
-                <span class="navbar-line mb-1"></span>
-                <span class="navbar-line"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mt-3 p-0">
-                    <li class="nav-item" *ngFor="let item of SideMenuist">
-                        <a class="nav-link" routerLinkActive="routerLinkActive"
-                            [routerLinkActiveOptions]="{exact: true}" routerLink="{{item.routerLink}}">
-                            {{item.name}}
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <nav class="share__card mb-3 p-2 navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid p-0">
+      <button
+        class="navbar-toggler p-2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-line mb-1"></span>
+        <span class="navbar-line mb-1"></span>
+        <span class="navbar-line"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mt-3 p-0">
+          <li class="nav-item" *ngFor="let item of data">
+            <a class="nav-link" routerLink="{{ item.routerLink }}">
+              {{ item.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
 
-
 <div class="container mb-4">
-    <div class="hwrap overflow-hidden">
-        <div class="hmove d-flex">
-            
-            <div class="hitem text-center"  *ngFor="let item of data; index as i;"> 
-                  <a href="javascript: void(0);" style="cursor:pointer;text-decoration:none" (click)="routeBar(item)">{{item.name}}</a> 
-                </div>
-            <!-- <div class="hitem text-center"> {{data[0].name}} </div>
+  <div class="hwrap overflow-hidden">
+    <div class="hmove d-flex">
+      <div class="hitem text-center" *ngFor="let item of data; index as i">
+        <a
+          href="javascript: void(0);"
+          style="cursor: pointer; text-decoration: none"
+          (click)="routeBar(item)"
+          >{{ item.name }}</a
+        >
+      </div>
+      <!-- <div class="hitem text-center"> {{data[0].name}} </div>
             <div class="hitem text-center">  {{data[0].name}} </div>
             <div class="hitem text-center">  {{data[0].name}} </div>
             <div class="hitem text-center">   {{data[0].name}} </div>
             <div class="hitem text-center">  {{data[0].name}}</div> -->
-        </div>
     </div>
+  </div>
 </div>
